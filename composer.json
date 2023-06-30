@@ -1,0 +1,38 @@
+{
+    "name": "placetopay/clicktopay-client",
+    "description": "SDK to consume the API services that expose the Brands for clicktopay",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Placetopay\\ClicktopayClient\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan Pabon",
+            "email": "juan.pabon@evertecinc.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "guzzlehttp/guzzle": "^7.7",
+        "mastercard/oauth1-signer": "^1.1",
+        "web-token/jwt-framework": "^3.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.20",
+        "phpunit/phpunit": "^9.6",
+        "easy-http/mock-builder": "^1.1"
+    },
+    "scripts": {
+        "tests": "phpunit --stop-on-error --stop-on-failure",
+        "tests-check":  "@tests --testdox",
+        "tests-xml": "@tests --coverage-clover coverage/phpunit.coverage.xml",
+        "phpunit-html": "@tests --coverage-html coverage/html",
+        "phpcs" : "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php",
+        "phpcs-validate" : "vendor/bin/php-cs-fixer fix --dry-run --diff"
+    }
+}

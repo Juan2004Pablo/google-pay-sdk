@@ -1,0 +1,37 @@
+image: placetopay/php-vapor:php81-pipeline
+
+clone:
+  depth: full
+definitions:
+  caches:
+    composer: vendor
+    sonar-cache: ~/.sonar/cache
+  steps:
+    - step: &build-and-test
+        name: Build application and run tests with coverage
+        artifacts:
+          - build/logs/clover.xml
+          - build/report.junit.xml
+        script:
+          - composer config bitbucket-oauth.bitbucket.org $BITBUCKET_CONSUMER_KEY $BITBUCKET_CONSUMER_SECRET
+          - composer install --no-interaction
+          - vendor/bin/php-cs-fixer fix --dry-run --diff --stop-on-violation --using-cache=no
+        caches:
+          - composer
+    - step: &sonarcloud-scan
+        name: Analyze on SonarCloud
+        caches:
+          - sonar-cache
+        script:
+          - pipe: sonarsource/sonarcloud-scan:1.2.0
+    - step: &sonarcloud-check-quality-gate
+        name: Check the Quality Gate on SonarCloud
+        caches:
+          - sonar-cache
+        script:
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.4
+pipelines:
+  default:
+    - step: *build-and-test
+    - step: *sonarcloud-scan
+    - step: *sonarcloud-check-quality-gate
