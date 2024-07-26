@@ -3,9 +3,19 @@
     "description": "SDK to consume the API services that expose the Brands for clicktopay",
     "type": "library",
     "license": "proprietary",
+    "keywords": [
+        "placetopay",
+        "clicktopay-client",
+        "clicktopay"
+    ],
     "autoload": {
         "psr-4": {
             "Placetopay\\ClicktopayClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
         }
     },
     "authors": [
