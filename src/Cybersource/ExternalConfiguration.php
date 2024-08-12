@@ -16,18 +16,18 @@ class ExternalConfiguration
 
     public function __construct()
     {
-        $this->authType = "http_signature";
-        $this->merchantID = "testgetnetcl_sandbox001";
-        $this->apiKeyID = "d5f80542-fa77-4cd6-9621-6546cdf26d9b";
-        $this->secretKey = "o1bjil39jdmPDtoRgsgzZ4H0LpnXVGagXRIJuj/0pAs=";
-        $this->runEnv = "apitest.cybersource.com";
+        $this->authType = 'http_signature';
+        $this->merchantID = 'testgetnetcl_sandbox001';
+        $this->apiKeyID = 'd5f80542-fa77-4cd6-9621-6546cdf26d9b';
+        $this->secretKey = 'o1bjil39jdmPDtoRgsgzZ4H0LpnXVGagXRIJuj/0pAs=';
+        $this->runEnv = 'apitest.cybersource.com';
 
         $this->merchantConfigObject();
     }
 
     public function merchantConfigObject(): MerchantConfiguration
     {
-        if (!isset($this->merchantConfig)) {
+        if (! isset($this->merchantConfig)) {
             $config = new MerchantConfiguration();
             $config->setauthenticationType(strtoupper(trim($this->authType)));
             $config->setMerchantID(trim($this->merchantID));
@@ -46,6 +46,7 @@ class ExternalConfiguration
         $merchantConf = $this->merchantConfigObject();
         $config = new Configuration();
         $config->setHost($merchantConf->getHost());
+
         return $config;
     }
 }
