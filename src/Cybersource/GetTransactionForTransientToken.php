@@ -19,8 +19,9 @@ function GetPaymentCredentialsForTransientToken(): void
     $paymentCredentialsReference = Utils::PAYMENT_CREDENTIALS_REFERENCE;
 
     try {
+        // FALLA
         $result = $api_instance->getPaymentCredentialsForTransientToken($paymentCredentialsReference);
-        print_r($result);
+        dd($result);
     } catch (Exception $e) {
         echo 'Exception when calling TransientTokenDataApi->getPaymentCredentialsForTransientToken: ', $e->getMessage(), PHP_EOL;
     }

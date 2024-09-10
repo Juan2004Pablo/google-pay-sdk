@@ -22,7 +22,7 @@ function getTransactionForTransientToken(): void
     try {
         $response = $api_instance->getTransactionForTransientToken($transientToken);
 
-        print_r($response);
+        dd($response);
     } catch (Exception $e) {
         echo 'Exception when calling TransientTokenDataApi->getTransactionForTransientToken: ', $e->getMessage(), PHP_EOL;
     }

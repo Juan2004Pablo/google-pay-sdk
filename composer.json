@@ -31,7 +31,8 @@
         "guzzlehttp/guzzle": "^7.7",
         "mastercard/oauth1-signer": "^1.1",
         "web-token/jwt-framework": "^3.2",
-        "cybersource/rest-client-php": "^0.0.52"
+        "cybersource/rest-client-php": "^0.0.52",
+        "phpseclib/phpseclib": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.20",
