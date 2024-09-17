@@ -14,10 +14,12 @@ class TokenDecrypt
     /**
      * @throws GooglePayError
      */
-    public function decrypt(array $data, string $privateKey): array
+    public function decrypt(array $data, string $privateKeyPath): array
     {
+        $privateKeyPem = file_get_contents($privateKeyPath);
+
         $signedMessage = $this->decodeSignedMessage($data['signedMessage']);
-        $sharedKey = $this->getSharedKey($signedMessage['ephemeralPublicKey'], $privateKey);
+        $sharedKey = $this->getSharedKey($signedMessage['ephemeralPublicKey'], $privateKeyPem);
         $derivedKey = $this->deriveKey($signedMessage['ephemeralPublicKey'], $sharedKey);
 
         $symmetricKey = substr($derivedKey, 0, 32);

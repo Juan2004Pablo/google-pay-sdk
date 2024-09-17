@@ -16,7 +16,7 @@ class KeyManager
         self::validateKeyContentNotEmpty($keyContent);
         $keyInBinary = self::decodeBase64($keyContent);
 
-        return self::loadPublicKey($keyInBinary);
+        return self::loadKey($keyInBinary);
     }
 
     /**
@@ -45,7 +45,7 @@ class KeyManager
     /**
      * @throws GooglePayError
      */
-    private static function loadPublicKey(string $keyInBinary): EC
+    private static function loadKey(string $keyInBinary): EC
     {
         try {
             $key = EC::loadFormat('PKCS8', $keyInBinary);
