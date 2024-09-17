@@ -1,16 +1,17 @@
 {
-    "name": "placetopay/clicktopay-client",
-    "description": "SDK to consume the API services that expose the Brands for clicktopay",
+    "name": "placetopay/google-pay-sdk",
+    "description": "SDK to consume decryption services for transactions with Google Pay",
     "type": "library",
     "license": "proprietary",
     "keywords": [
         "placetopay",
-        "clicktopay-client",
-        "clicktopay"
+        "google-pay",
+        "googlepay",
+        "google-pay-sdk"
     ],
     "autoload": {
         "psr-4": {
-            "Placetopay\\ClicktopayClient\\": "src/"
+            "Placetopay\\GooglePaySdk\\": "src/"
         }
     },
     "autoload-dev": {
@@ -22,6 +23,10 @@
         {
             "name": "Juan Pabon",
             "email": "juan.pabon@evertecinc.com"
+        },
+        {
+            "name": "Andres Zea",
+            "email": "andres.zea@evertecinc.com"
         }
     ],
     "require": {
